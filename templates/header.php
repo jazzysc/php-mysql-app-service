@@ -10,6 +10,6 @@
 </head>
 <body>
 	<div class="center-align"> 
-		<h1>Product Catalog</h1>
+		<h1>Product Catalog RPSOI</h1>
 		<br>
 	</div>
