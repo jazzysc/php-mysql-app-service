@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- bash: |
+    chmod -R 777  ./
+    docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t https://phpsqldemorpsoi.azurewebsites.net/index.php -x xml_report.xml
+    true
+  displayName: 'Owasp Container Scan'
+
+- powershell: |
+    $XslPath = "https://github.com/jazzysc/owasp-zap/blob/main/xml_to_nunit.xslt" 
+    $XmlInputPath = "xml_report.xml"
+    $XmlOutputPath = "converted_report.xml"
+    $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
+    $XslTransform.Load($XslPath)
+    $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
+  displayName: 'PowerShell Script'
+
