@@ -25,3 +25,8 @@ steps:
     $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
   displayName: 'PowerShell Script'
 
+- task: PublishTestResults@2
+  inputs:
+     testResultsFormat: 'NUnit'
+     testResultsFiles: 'converted_report.xml'
+  displayName: 'Publish Test Results'
