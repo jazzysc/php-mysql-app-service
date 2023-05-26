@@ -10,6 +10,6 @@
 </head>
 <body>
 	<div class="center-align"> 
-		<h1>Product Catalog RP SOIDISM</h1>
+		<h1>Product Catalog RP 2</h1>
 		<br>
 	</div>
