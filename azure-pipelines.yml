@@ -43,9 +43,9 @@ stages:
       workingDirectory: $(rootFolder)
       displayName: 'Use PHP version $(phpVersion)'
     - bash:  |
-        docker pull exakat/exakat
-        docker run -it --rm  exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git --format Text
-        docker run -it --rm  -v /tmp/projects:/usr/src/exakat/projects/ exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git
+        sudo docker pull exakat/exakat
+        sudo docker run -it --rm  exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git --format Text
+        sudo docker run -it --rm  -v /tmp/projects:/usr/src/exakat/projects/ exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git
 
 #    - script: composer install --no-interaction --prefer-dist
 #      workingDirectory: $(rootFolder)
