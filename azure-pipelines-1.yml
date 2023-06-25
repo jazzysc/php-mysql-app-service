@@ -12,8 +12,8 @@ pool:
 steps:
 
 - bash: |
-    chmod -R 777  ./
-    docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t https://phpsqldemorpsoi.azurewebsites.net/index.php -x xml_report.xml
+    sudo chmod -R 777  ./
+    sudo docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t https://phpsqldemorpsoi.azurewebsites.net/index.php -x xml_report.xml
     true
   displayName: 'Owasp Container Scan'
 
