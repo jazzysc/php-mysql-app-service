@@ -36,7 +36,10 @@ stages:
     - bash:  |
         sudo docker pull exakat/exakat
         sudo docker run --rm  exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git --format Text
-        sudo docker run --rm  -v `pwd`/projects:/usr/src/exakat/projects/ exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git
+        sudo docker run --rm  -v /tmp/projects:/usr/src/exakat/projects/ exakat/exakat:latest project -p dvwa -R https://github.com/digininja/DVWA.git 
+        sudo chmod -R 777 /tmp/projects
+
+
       displayName: 'Exakat scan'
 #    - script: composer install --no-interaction --prefer-dist
 #      workingDirectory: $(rootFolder)
