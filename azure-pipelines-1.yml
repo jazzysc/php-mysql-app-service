@@ -17,6 +17,22 @@ steps:
     sudo docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.111.134/DVWA/login.php -n DVWA_Login.context -x xml_report.xml -U admin
     true
   displayName: 'Owasp Container Scan'
+  
+
+- powershell: |
+    $XslPath = "$($Env:SYSTEM_DEFAULTWORKINGDIRECTORY)/_Quality/SecurityTesting/OWASPToNUnit3.xslt"
+    $XmlInputPath = "$($Env:SYSTEM_DEFAULTWORKINGDIRECTORY)/xml_report.xml"
+    $XmlOutputPath = "$($Env:SYSTEM_DEFAULTWORKINGDIRECTORY)/Converted-OWASP-ZAP-Report.xml"
+    $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
+    $XslTransform.Load($XslPath)
+    $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
+  displayName: 'PowerShell Display'
+
+- task: PublishTestResults@2
+  inputs:
+     testResultsFormat: 'NUnit'
+     testResultsFiles: 'Converted-OWASP-ZAP-Report.xml'
+  displayName: 'Publish Test Results'
 
 
 
