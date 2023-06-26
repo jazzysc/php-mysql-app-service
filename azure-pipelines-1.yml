@@ -31,7 +31,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
      testResultsFormat: 'NUnit'
-     testResultsFiles: 'Converted-OWASP-ZAP-Report.xml'
+     testResultsFiles: '/home/fyp23/OWASPzap/Converted-OWASP-ZAP-Report.xml'
   displayName: 'Publish Test Results'
 
 
