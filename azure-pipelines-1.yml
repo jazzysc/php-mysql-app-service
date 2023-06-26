@@ -13,7 +13,7 @@ steps:
 
 - bash: |
     sudo chmod -R 777  ./
-    sudo docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.111.134/DVWA/login.php -n DVWA_Login.context -x /tmp/xml_report.xml -U admin
+    sudo docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.111.134/DVWA/login.php -n /home/fyp23/OWASPzap/DVWA_Login.context -x /tmp/xml_report.xml -U admin
     true
   displayName: 'Owasp Container Scan'
 
