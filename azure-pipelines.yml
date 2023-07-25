@@ -36,11 +36,13 @@ stages:
     
      
     - bash:  |
+        cd /home/fyp23/manualtesting
         result=`./xssreflected.sh|grep "<script>alert(1)</script>"`
 
         if [ “$result” == “” ]
           then
             echo “OK”
+            echo $result
         else
           echo $result
           exit 1
