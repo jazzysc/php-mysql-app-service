@@ -44,6 +44,7 @@ stages:
             echo “OK”
             echo $result
         else
+          echo “Vulnerable to XSS”
           echo $result
           exit 1
         fi
